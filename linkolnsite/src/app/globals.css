@@ -3,6 +3,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@import "swiper/css";
+@import "swiper/css/free-mode";
+@import "swiper/css/autoplay";
+
+
 :root {
   /* Updated color tokens for Linkoln Technology luxury brand - black, white, and gold theme */
   --background: oklch(1 0 0); /* Pure white background */

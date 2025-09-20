@@ -35,62 +35,72 @@ const services = [
   {
     icon: Sun,
     title: "Solar Energy Systems and Inverter Integration",
-    description: "We provide high-quality systems engineered for efficiency,durability, and seamless energy conversion.",
-    features: ["Video intercoms", "Access control", "Multi-unit systems", "Mobile integration"],
+    description: "We provide high-quality systems engineered for efficiency, durability, and seamless energy conversion.",
+    features: ["Solar panel installation", "Battery systems", "Grid integration", "Energy monitoring"],
     popular: false,
   },
   {
     icon: Car,
     title: "Car Rental Services",
-    description: "We provide a convenient and flexible solution for individuals and businesses that need temporary access to a vehichle within and outside the state of Lagos Nigeria",
-    features: ["Car Rental", "Security Cars", "Escort Services", "Vip Movement"],
+    description: "We provide a convenient and flexible solution for individuals and businesses that need temporary access to a vehicle within and outside the state of Lagos Nigeria",
+    features: ["Car Rental", "Security Cars", "Escort Services", "VIP Movement"],
     popular: false,
   },
 ]
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 font-work-sans">Our Services</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+    <section id="services" className="py-12 lg:py-16 bg-background">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="text-center mb-10 lg:mb-12">
+          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3 font-work-sans">Our Services</h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Comprehensive electrical solutions tailored to meet your modern technology needs
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
           {services.map((service, index) => (
             <Card
               key={index}
-              className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-border hover:border-accent/50"
+              className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-border hover:border-accent/50 h-full"
             >
-              <CardHeader className="text-center pb-4">
-                {service.popular && (
-                  <Badge variant="secondary" className="w-fit mx-auto mb-2">
-                    Most Popular
-                  </Badge>
-                )}
-                <div className="mx-auto mb-4 p-3 bg-accent/10 rounded-full w-fit group-hover:bg-accent/20 transition-colors duration-300">
-                  <service.icon className="h-8 w-8 text-accent" />
+              <CardHeader className="pb-3 lg:pb-4">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="p-2 lg:p-2.5 bg-accent/10 rounded-lg w-fit group-hover:bg-accent/20 transition-colors duration-300">
+                    <service.icon className="h-5 w-5 lg:h-6 lg:w-6 text-accent" />
+                  </div>
+                  {service.popular && (
+                    <Badge variant="secondary" className="text-xs px-2 py-1">
+                      Popular
+                    </Badge>
+                  )}
                 </div>
-                <CardTitle className="text-xl font-bold text-card-foreground font-work-sans">{service.title}</CardTitle>
+                <CardTitle className="text-lg lg:text-xl font-bold text-card-foreground font-work-sans leading-tight">
+                  {service.title}
+                </CardTitle>
               </CardHeader>
-              <CardContent className="text-center">
-                <CardDescription className="text-muted-foreground mb-6 leading-relaxed">
+              
+              <CardContent className="pt-0">
+                <CardDescription className="text-sm lg:text-base text-muted-foreground mb-4 leading-relaxed line-clamp-3">
                   {service.description}
                 </CardDescription>
-                <ul className="space-y-2 mb-6">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-muted-foreground">
-                      <ArrowRight className="h-4 w-4 text-accent mr-2 flex-shrink-0" />
-                      {feature}
-                    </li>
+                
+                <div className="space-y-1.5">
+                  {service.features.slice(0, 4).map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-center text-sm text-muted-foreground">
+                      <ArrowRight className="h-3.5 w-3.5 text-accent mr-2 flex-shrink-0" />
+                      <span className="line-clamp-1">{feature}</span>
+                    </div>
                   ))}
-                </ul>
-                {/* <div className="text-accent font-semibold group-hover:text-accent-foreground transition-colors duration-300">
-                  Learn More →
-                </div> */}
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-border/50">
+                  <button className="text-sm font-medium text-accent hover:text-accent-foreground transition-colors duration-200 flex items-center group/btn">
+                    Learn More 
+                    <ArrowRight className="h-3.5 w-3.5 ml-1 group-hover/btn:translate-x-0.5 transition-transform duration-200" />
+                  </button>
+                </div>
               </CardContent>
             </Card>
           ))}

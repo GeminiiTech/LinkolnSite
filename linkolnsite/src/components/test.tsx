@@ -6,11 +6,11 @@ import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, Phone, Globe, MapPin } from "lucide-react"
+import { Label } from "@/components/ui/label"
+import { MapPin, Phone, Mail, Clock, Send } from "lucide-react"
 
-export function Contact() {
+export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -21,83 +21,115 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Contact form submitted:", formData)
-    alert("Thank you for your message! We will get back to you soon.")
+    alert("Thank you for your message! We'll get back to you within 24 hours.")
     setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
   }
-
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
 
   return (
-    <section id="contact" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-20 bg-background">
+      <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Get In <span className="text-accent">Touch</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Ready to book or have questions? Contact us today
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 font-work-sans">Get In Touch</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Ready to start your electrical project? Contact us today for a free consultation
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold text-foreground mb-6">Contact Information</h3>
-              <div className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className="flex items-center justify-center w-12 h-12 bg-accent/10 rounded-full">
-                    <Mail className="w-6 h-6 text-accent" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Email</div>
-                    <div className="text-muted-foreground">Linkolntech@gmail.com</div>
-                  </div>
-                </div>
+          <div>
+            <h3 className="text-2xl font-bold text-foreground mb-8 font-work-sans">Contact Information</h3>
 
-                <div className="flex items-center space-x-4">
-                  <div className="flex items-center justify-center w-12 h-12 bg-accent/10 rounded-full">
-                    <Globe className="w-6 h-6 text-accent" />
+            <div className="space-y-6">
+              <Card className="p-6">
+                <div className="flex items-start space-x-4">
+                  <div className="bg-accent/10 p-3 rounded-full">
+                    <MapPin className="h-6 w-6 text-accent" />
                   </div>
                   <div>
-                    <div className="font-semibold text-foreground">Website</div>
-                    <div className="text-muted-foreground">www.linkolntechnology.com</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="flex items-center justify-center w-12 h-12 bg-accent/10 rounded-full">
-                    <Phone className="w-6 h-6 text-accent" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Social Media</div>
-                    <div className="text-muted-foreground">@linkolntech</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="flex items-center justify-center w-12 h-12 bg-accent/10 rounded-full">
-                    <MapPin className="w-6 h-6 text-accent" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Location</div>
-                    <div className="text-muted-foreground">
+                    <h4 className="font-bold text-foreground mb-1">Address</h4>
                     <p className="text-muted-foreground">
                       22 Rosenje Street
                       <br />
                       Off Deeper Church, Gbagada Lagos
-                    </p></div>
+                    </p>
                   </div>
                 </div>
-              </div>
+              </Card>
+
+              <Card className="p-6">
+                <div className="flex items-start space-x-4">
+                  <div className="bg-accent/10 p-3 rounded-full">
+                    <Phone className="h-6 w-6 text-accent" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-foreground mb-1">Phone</h4>
+                    <p className="text-muted-foreground">
+                      +234 8139633617
+                      <br />
+                      +234 8115659582
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <div className="flex items-start space-x-4">
+                  <div className="bg-accent/10 p-3 rounded-full">
+                    <Mail className="h-6 w-6 text-accent" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-foreground mb-1">Email</h4>
+                    <p className="text-muted-foreground">
+                      iLinkolntech@gmail.com
+                      <br />
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <div className="flex items-start space-x-4">
+                  <div className="bg-accent/10 p-3 rounded-full">
+                    <Clock className="h-6 w-6 text-accent" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-foreground mb-1">Business Hours</h4>
+                    <p className="text-muted-foreground">
+                      Mon - Fri: 8:00 AM - 6:00 PM
+                      <br />
+                      Sat: 9:00 AM - 4:00 PM
+                      <br />
+                      Sun: Emergency calls only
+                    </p>
+                  </div>
+                </div>
+              </Card>
             </div>
+
+            {/* Live Map */}
+            <Card className="mt-8 overflow-hidden">
+              <div className="aspect-video bg-muted flex items-center justify-center">
+                <iframe
+                  title="Location Map"
+                  src="https://www.google.com/maps?q=22+Rosenje+Street,+Gbagada+Lagos&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-full"
+                />
+              </div>
+            </Card>
           </div>
 
           {/* Contact Form */}
-          <Card className="bg-card border-border">
+          <Card className="bg-card border-border h-1/2">
             <CardHeader>
               <CardTitle className="text-xl text-foreground">Send us a Message</CardTitle>
             </CardHeader>
